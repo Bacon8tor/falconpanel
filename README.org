@@ -3,5 +3,13 @@ My edit of the falconPanel from candera.
 
 Here are a few images of my first test using the toggle switches with arduino for Falcon BMS. 
 
-![Alt text](falconpanel/QypgBAa.jpg "Front")
-![Alt text](falconpanel/HwYyhU1.jpg "Back")
+Front
+[[QypgBAa.jpg]]
+
+Back
+[[HwYyhU1.jpg]]
+
+Fritzing Schematic 
+
+Will upload later today
+
