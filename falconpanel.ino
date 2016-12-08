@@ -6,98 +6,37 @@
 
   Modify the components array below to match your setup.
 
+    EDITTED BY:  BACON8TOR
+
 */
+
 
 const int pinLed = LED_BUILTIN;
 
-#include "components.h"
+#include "compents.h"
 
-// I've got a 74LS151 3-to-8 mux with its address pins connected to
-// Arduino pins 2-4, and with its output pin connected to Arduino pin
-// 5. We have to declare this outside the components array below
-// because we reference it in there.
-IC74LS151* mux1 = new IC74LS151(new DigitalOutputPin(2),
-                                new DigitalOutputPin(3),
-                                new DigitalOutputPin(4),
-                                new DigitalInputPullupPin(5));
-
-// Keep track of the button number so I don't have to keep looking at
-// what I used.
 int dxButton = 1;
 
-// Configure our particular setup. Change this to match what you have.
-Component* components[] =   {
-  // List the mux here so its setup gets called
-  mux1,
-  // Master Arm
-  new OnOffOnSwitch(mux1->input(0),
-                    mux1->input(1),
-                    new MomentaryButton(new DxButton(dxButton++)),
+Componet* components[] = {
+
+  //Laser Arm
+  new OnOffSwitch(new DigitalInputPullupPin(0),
                     new MomentaryButton(new DxButton(dxButton++)),
                     new MomentaryButton(new DxButton(dxButton++))),
-  // Laser Arm
-  new OnOffSwitch(mux1->input(2),
-                  new MomentaryButton(new DxButton(dxButton++)),
-                  new MomentaryButton(new DxButton(dxButton++))),
-  // Emergency Stores Jettison
-  new PushButton(mux1->input(3), new DxButton(dxButton++)),
-  // Parking Brake
-  new OnOffSwitch(new DigitalInputPullupPin(6),
-                  new MomentaryButton(new DxButton(dxButton++)),
-                  new MomentaryButton(new DxButton(dxButton++))),
-  // Stores config
-  new OnOffSwitch(new DigitalInputPullupPin(7),
-                  new MomentaryButton(new DxButton(dxButton++)),
-                  new MomentaryButton(new DxButton(dxButton++))),
-  // Taxi Lights
-  new OnOffSwitch(mux1->input(4),
-                  new MomentaryButton(new DxButton(dxButton++)),
-                  new MomentaryButton(new DxButton(dxButton++))),
-  // Landing Gear
-  new OnOffSwitch(mux1->input(5),
-                  new MomentaryButton(new DxButton(dxButton++)),
-                  new MomentaryButton(new DxButton(dxButton++))),
-  // HMCS
-  new SwitchingRotary(new AnalogInputPin(0),
-                      DxAxis::XRotation(),
+  //Master Arm
+  new OnOffOnSwitch(new DigitalInputPullupPin(2),
+                    new DigitalInputPullupPin(3),
                       new MomentaryButton(new DxButton(dxButton++)),
                       new MomentaryButton(new DxButton(dxButton++)),
-                      0.05),
-  // Chaff
-  new OnOffSwitch(new DigitalInputPullupPin(8),
-                  new MomentaryButton(new DxButton(dxButton++)),
-                  new MomentaryButton(new DxButton(dxButton++))),
-  // Flares
-  new OnOffSwitch(new DigitalInputPullupPin(9),
-                  new MomentaryButton(new DxButton(dxButton++)),
-                  new MomentaryButton(new DxButton(dxButton++))),
-  // Altimeter
-  new PulseRotary(new AnalogInputPin(1),
-                  new MomentaryButton(new DxButton(dxButton++), 1),
-                  new MomentaryButton(new DxButton(dxButton++), 1),
-                  16),
-  // A/R Door
-  new OnOffSwitch(new DigitalInputPullupPin(10),
-                  new MomentaryButton(new DxButton(dxButton++)),
-                  new MomentaryButton(new DxButton(dxButton++))),
-  // Master Lights
-  new OnOffSwitch(new DigitalInputPullupPin(11),
-                  new MomentaryButton(new DxButton(dxButton++)),
-                  new MomentaryButton(new DxButton(dxButton++))),
-  // AVCD
-  new OnOffOnSwitch(mux1->input(6),
-                    mux1->input(7),
+                      new MomentaryButton(new DxButton(dxButton++))),
+  //Cat I/III
+  new OnOffSwitch(new DigitalInputPullupPin(4),
                     new MomentaryButton(new DxButton(dxButton++)),
-                    new MomentaryButton(new DxButton(dxButton++)),
-                    new MomentaryButton(new DxButton(dxButton++))),
+                    new MomentaryButton(new DxButton(dxButton++)))
                     
-  // Altimeter adjustment
-  new RotaryEncoder(new DigitalInputPullupPin(12),
-                    new DigitalInputPullupPin(13),
-                    new DxButton(dxButton++),
-                    new DxButton(dxButton++),
-                    4)
-};
+}
+
+
 
 const int componentCount = sizeof(components)/sizeof(Component*);
 
@@ -127,7 +66,6 @@ void loop() {
   // simple debounce
   delay(75);
 }
-
 /*
   Prototypes:
 
