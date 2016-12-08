@@ -32,7 +32,24 @@ Componet* components[] = {
   //Cat I/III
   new OnOffSwitch(new DigitalInputPullupPin(4),
                     new MomentaryButton(new DxButton(dxButton++)),
+                    new MomentaryButton(new DxButton(dxButton++))),
+  //Pitch ALT Hold
+  new OnOffOnSwitch(new DigitalInputPullupPin(7),
+                    new DigitalInputPullupPin(8),
+                      new MomentaryButton(new DxButton(dxButton++)),
+                      new MomentaryButton(new DxButton(dxButton++)),
+                      new MomentaryButton(new DxButton(dxButton++))),
+  //Roll HDG Hold
+  new OnOffOnSwitch(new DigitalInputPullupPin(9),
+                    new DigitalInputPullupPin(10),
+                      new MomentaryButton(new DxButton(dxButton++)),
+                      new MomentaryButton(new DxButton(dxButton++)),
+                      new MomentaryButton(new DxButton(dxButton++))),
+  //Landing Gear 
+  new OnOffSwitch(new DigitalInputPullupPin(11),
+                    new MomentaryButton(new DxButton(dxButton++)),
                     new MomentaryButton(new DxButton(dxButton++)))
+  
                     
 }
 
