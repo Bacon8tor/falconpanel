@@ -1,3 +1,7 @@
+
+#include <HID-Project.h>
+#include <HID-Settings.h>
+
 /*
   Copyright (c) 2015 Craig Andera
 
@@ -13,11 +17,11 @@
 
 const int pinLed = LED_BUILTIN;
 
-#include "compents.h"
+#include "components.h"
 
 int dxButton = 1;
 
-Componet* components[] = {
+Component* components[] = {
 
   //Laser Arm
   new OnOffSwitch(new DigitalInputPullupPin(0),
@@ -51,7 +55,7 @@ Componet* components[] = {
                     new MomentaryButton(new DxButton(dxButton++)))
   
                     
-}
+};
 
 
 
